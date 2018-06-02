@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+    image-service:
+        build: "image-service"
+        ports:
+            - "8080:80"
+    viewer-service:
+        build: "viewer-service"
+        ports:
+            - "80:80"
+
