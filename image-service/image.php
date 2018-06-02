@@ -1,4 +1,7 @@
 <?php
+
+$date = $_GET['date'];
+
 $width = 4;
 $height = 4;
 
@@ -13,6 +16,7 @@ for($row = 1; $row <= $height; $row++) {
     }
 }
 
+
 header('content-type: image/png');
-header(sprintf('content-disposition: inline; filename="%s.png"', time()));
+header(sprintf('content-disposition: inline; filename="%s.png"', $date));
 imagepng($image);
