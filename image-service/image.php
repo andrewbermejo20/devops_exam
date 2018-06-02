@@ -19,4 +19,11 @@ for($row = 1; $row <= $height; $row++) {
 
 header('content-type: image/png');
 header(sprintf('content-disposition: inline; filename="%s.png"', $date));
+
+/*
+ * Add browser caching. 
+ * Im thinking to change to server side caching but nevermind
+ */
+header('Cache-Control: max-age=86400');
+
 imagepng($image);
