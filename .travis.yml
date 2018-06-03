@@ -8,18 +8,17 @@ env:
         - HEROKU_APP_NAME: "devops-exam-image-service"
 
 before_install:
-    - wget -qO- https://toolbelt.heroku.com/install.sh | sh
+    - npm install -g heroku
 
 script:
-    - /usr/local/heroku/bin/heroku version
-    - /usr/local/heroku/bin/heroku container:login -a "${HEROKU_APP_NAME}"  
+    - heroku container:login -a "${HEROKU_APP_NAME}"  
 
 
 deploy:
     - provider: script
       skip-cleanup: true
       script:
-          - /usr/local/heroku/bin/heroku container:push --recursive -a "${HEROKU_APP_NAME}"
+          - heroku container:push --recursive -a "${HEROKU_APP_NAME}"
       on:
           branch: development 
 
