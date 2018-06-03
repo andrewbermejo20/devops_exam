@@ -19,7 +19,7 @@ deploy:
     - provider: script
       script:
           - docker push "${IMAGE_SERVICE_TAG}"
-    app: devops-exam-image-service 
-    on:
-        repo: andrewbermejo20/devops_exam
-        branch: development 
+      app: devops-exam-image-service 
+      on:
+          repo: andrewbermejo20/devops_exam
+          branch: development 
