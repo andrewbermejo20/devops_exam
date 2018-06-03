@@ -17,8 +17,16 @@ script:
 
 deploy:
     - provider: script
+      skip-cleanup: true
       script:
           - docker push "${IMAGE_SERVICE_TAG}"
       on:
-          repo: andrewbermejo20/devops_exam
           branch: development 
+
+    - provider: pages
+      skip-cleanup: true
+      github-token: ${GITHUB_TOKEN}
+      keep-history: true
+      local-dir: viewer-service
+      on:
+          branch: development
