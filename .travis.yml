@@ -2,25 +2,23 @@ sudo: required
 
 services:
     - docker
+
 env:
     global:
-        - DOCKER_COMPOSE_VERSION: 1.21.2
+        - IMAGE_SERVICE_TAG: "registry.heroku.com/${HEROKU_USERNAME}-devops_exam/image-service"
 
 before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
+    - docker login --username "${HEROKU_USERNAME}" --password "${HEROKU_API_KEY}" registry.heroku.com
+    - docker build -t "${IMAGE_SERVICE_TAG}" image-service
 
-script:
-    - docker-compose build image-service
-    - docker images
+#script:
+#    - <<build test here>>
 
 
 deploy:
-    provider: heroku
-    api_key: ${HEROKU_API_KEY}
-    #    secure: "AInYZDSpOQz3xwaAUvAsszf8iowCspuXaUuAYzpVVXCzUf1sEEMyjAjAjUjfkW4BwwQH8zr2H0ZujW/jBKORMFckkt786ocA/MTSpHc550/7OkfS7oj0Lzul7DVG7JSLXif+03Ks0qtm/ADTx49cH3/pgDRsORPLgSYuMz8f9dP/KoglIia2h0isbxuqgKpS1rzxR6QXFUO5d2FbfXscCueXDupkS9TEXZ1+RKQKm4ezGTNud8gGnD/gevTp2o6sFz6GB03i4IiK+OD8ZWCSSI2uiC80BFALAEpiCaplouHSkYvKI7iGtyvkSXiITcTtkTvzIRYM12606ILqGZIrwyTYV95LIx3MbKwiYrVW68FIPBcsu63zdwvD0Dn4izcp4ZylN9MHo3CQ1CVw7T9vw5BiELFU9ZOXaGEYAZuauYRuk8PV0xeqlYNJkLlLVH9lyOWnmwufR+CqKTZthuGdXUKAhStLn/b1EIBO382rHN5KMCUbPT2kdUYlJ1fnYSWqtDfIK/ExQt5KPofW4a+/QSRuDC0GiVTBcB/K1dndRSYrKSj+AXhu92FIcgZgpmlvsmWPJmxaZSWvaJs4d+foc/6oyCAYM9E1BJ7zCjyMZjo3iTD6Ek0mzd3Mj+qWP/geKdwJtiiVVObwLb9Sf4a2OUKvBySELNMzQHR4+gvGFBw=" 
+    - provider: script
+      script:
+          - docker push "${IMAGE_SERVICE_TAG}"
     app: devops-exam-image-service 
     on:
         repo: andrewbermejo20/devops_exam
