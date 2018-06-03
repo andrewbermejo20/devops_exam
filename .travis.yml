@@ -5,11 +5,10 @@ services:
 
 env:
     global:
-        - IMAGE_SERVICE_TAG: "registry.heroku.com/devops-exam-image-service/web"
+        - HEROKU_APP_NAME: "devops-exam-image-service"
 
 before_install:
-    - docker login --username "${HEROKU_USERNAME}" --password "${HEROKU_API_KEY}" registry.heroku.com
-    - docker build -t "${IMAGE_SERVICE_TAG}" image-service
+    - wget -qO- https://toolbelt.heroku.com/install.sh | sh
 
 script:
     - docker images
@@ -19,7 +18,7 @@ deploy:
     - provider: script
       skip-cleanup: true
       script:
-          - docker push "${IMAGE_SERVICE_TAG}"
+              - /usr/local/heroku/bin/heroku container:push web --app "${HEROKU_APP_NAME}"
       on:
           branch: development 
 
