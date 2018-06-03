@@ -5,7 +5,7 @@ services:
 
 env:
     global:
-        - IMAGE_SERVICE_TAG: "registry.heroku.com/devops-exam-image-service/release"
+        - IMAGE_SERVICE_TAG: "registry.heroku.com/devops-exam-image-service/web"
 
 before_install:
     - docker login --username "${HEROKU_USERNAME}" --password "${HEROKU_API_KEY}" registry.heroku.com
