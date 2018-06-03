@@ -3,10 +3,12 @@ version: "3"
 services:
     image-service:
         build: "image-service"
+        image: "andrewbermejo20/devops-exam_image-service"
         ports:
             - "8080:80"
     viewer-service:
         build: "viewer-service"
+        image: "andrewbermejo20/devop-exam_viewer-service"
         ports:
             - "80:80"
 
