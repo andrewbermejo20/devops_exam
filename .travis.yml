@@ -9,6 +9,7 @@ env:
 
 before_install:
     - wget -qO- https://toolbelt.heroku.com/install.sh | sh
+    - /usr/local/heroku/bin/heroku container:login --app "${HEROKU_APP_NAME}"  
 
 script:
     - docker images
@@ -18,7 +19,7 @@ deploy:
     - provider: script
       skip-cleanup: true
       script:
-              - /usr/local/heroku/bin/heroku container:push web --app "${HEROKU_APP_NAME}"
+          - /usr/local/heroku/bin/heroku container:push web --app "${HEROKU_APP_NAME}"
       on:
           branch: development 
 
