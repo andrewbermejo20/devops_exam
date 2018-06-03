@@ -13,19 +13,20 @@ before_install:
 
 script:
     - docker images
+    - docker push "${IMAGE_SERVICE_TAG}"
 
 
 deploy:
-    - provider: script
-      skip-cleanup: true
-      script:
-          - docker push "${IMAGE_SERVICE_TAG}"
-      on:
-          branch: development 
+#    - provider: script
+#      skip-cleanup: true
+#      script:
+#          - docker push "${IMAGE_SERVICE_TAG}"
+#      on:
+#          branch: development 
 
     - provider: pages
       skip-cleanup: true
-      github-token: ${GITHUB_TOKEN}
+      github-token: "${GITHUB_TOKEN}"
       keep-history: true
       local-dir: viewer-service
       on:
