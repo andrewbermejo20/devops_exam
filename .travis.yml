@@ -9,16 +9,17 @@ env:
 
 before_install:
     - npm install -g heroku
+    - heroku container:login  
 
 script:
-    - heroku container:login -a "${HEROKU_APP_NAME}"  
+    - heroku container:push --recursive -a "${HEROKU_APP_NAME}"
 
 
 deploy:
     - provider: script
       skip-cleanup: true
       script:
-          - heroku container:push --recursive -a "${HEROKU_APP_NAME}"
+          - heroku container:release web -a "${HEROKU_APP_NAME}"
       on:
           branch: development 
 
