@@ -21,4 +21,4 @@ deploy:
     provider: heroku
     api_key:
         secure: p6QqVsEaGJAez1tMggjtEvDJF0ZlFf/1YLbW89KcPVUPajhmaO99hx46pICbuWtuOPixqSAtJyQwFRQKjpdjlk3QWQZcCk7ejvCwsOIWQdakkPoEzkbFmQp3hjikFzGYIi3cDmazvRZg+h0VXz64x5BBgDwoOR78lsfjuI3G+MotN1BFjeqKNwBKF/crKFRgklQFg+ZBOMY21H52UCrzGvowtcQQDBhq59wb7w+7CFdxcmn/oDLLlosEuKr7T4Ld4KtpUUZyGJZlQk8IUb3mVJBGb3v9TSPOYGDqBFirynfa1/SViSQ9yN8xnb4ULvoFuVytZowb85YZCXA2l6tW3/moVo3Do95q7Zyjsg2M7VEGa8hpLekK/cdxIOTrKQ7ZKs3MNacjMiamuJmDIOJ9vG98CEwWnYUH/8WxaNGFUSSfD4a/NLS84NDR70SlN3vQEEV+vcRiOV1Ne9Vho/CoqgeLROamwObpgAeY8+RP0Xr+By8AiSzbnpI+JXkTcRa65X+SSWEPlebp3x5srSCQ92kVKV7EPsSOoHDV1wKZMOEBTBERowcnVqhQqEZNHglVqEf69KhfFU8EP722oNhm6MHSRfMfbnedAEHcNGskP48UXqUzx9L2oveCUX62qP+9AAx7CCyhQO9+TF0PYVq9z6rSnNK3WKOzW77BKmG3ERI=
-   app: devops-exam-image-service 
+    app: devops-exam-image-service 
