@@ -11,7 +11,8 @@ before_install:
     - wget -qO- https://toolbelt.heroku.com/install.sh | sh
 
 script:
-    - /usr/local/heroku/bin/heroku container:login --app "${HEROKU_APP_NAME}"  
+    - /usr/local/heroku/bin/heroku version
+    - /usr/local/heroku/bin/heroku container:login -a "${HEROKU_APP_NAME}"  
 
 
 deploy:
