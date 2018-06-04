@@ -21,12 +21,12 @@ script:
 #    - docker-compose up -d image-service
 #    - docker ps | grep -q "${HEROKU_APP_NAME}"
 #    - docker-compose down
+    - heroku container:push --recursive -a "${HEROKU_APP_NAME}"
 
 deploy:
     - provider: script
       skip-cleanup: true
       script:
-          - heroku container:push --recursive -a "${HEROKU_APP_NAME}"
           - heroku container:release web -a "${HEROKU_APP_NAME}"
       on:
           branch: development 
