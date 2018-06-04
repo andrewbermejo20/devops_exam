@@ -2,13 +2,19 @@ version: "3"
 
 services:
     image-service:
-        build: "image-service"
-        image: "andrewbermejo20/devops-exam_image-service"
+        build: 
+            context: image-service
+            dockerfile: Dockerfile.web
+        image: devops-exam-image-service/web
+        environment:
+                - "PORT: 5000"
         ports:
-            - "8080:80"
+            - 80:5000
+
     viewer-service:
-        build: "viewer-service"
-        image: "andrewbermejo20/devop-exam_viewer-service"
+        image: nginx:alpine
+        volumes:
+            - ./viewer-service:/usr/share/nginx/html
         ports:
-            - "80:80"
+            - 8080:80
 

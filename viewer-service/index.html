@@ -49,11 +49,11 @@
           imageDate.value = formatDate(new Date());
 
           const todayImage = document.querySelector('img[name="todayImage"]');
-          todayImage.src = 'http://localhost:8080/image.php?date='+formatDate(imageDate.value);
+          todayImage.src = 'http://localhost/image.php?date='+formatDate(imageDate.value);
 
           const getImageBtn = document.querySelector('input[name="getImage"]');
           getImageBtn.addEventListener('click', () => {
-            todayImage.src = 'http://localhost:8080/image.php?date='+formatDate(imageDate.value);
+            todayImage.src = 'http://localhost/image.php?date='+formatDate(imageDate.value);
           });
         })();
     </script>

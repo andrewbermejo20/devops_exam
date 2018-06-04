@@ -6,6 +6,7 @@ services:
 env:
     global:
         - HEROKU_APP_NAME: "devops-exam-image-service"
+        - IMAGE_SERVICE_HOST: "${HEROKU_APP_NAME}.herokuapp.com"
 
 before_install:
     - npm install -g heroku
@@ -13,6 +14,7 @@ before_install:
 
 script:
     - heroku container:push --recursive -a "${HEROKU_APP_NAME}"
+    - sed "s/localhost/${IMAGE_SERVICE_HOST}/g" -i viewer-service/index.html  
 
 
 deploy:
