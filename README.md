@@ -5,7 +5,8 @@ I want to use php-7.2-apache but for some FREAKING issue, I can`t make it run so
 ```
 AH00534: apache2: Configuration error: More than one MPM loaded.
 ```
- 
+documentation is posted on WIKI https://github.com/andrewbermejo20/devops_exam/wiki/Simple-guide
+
 
 ## Goals
 

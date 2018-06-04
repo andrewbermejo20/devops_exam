@@ -29,7 +29,7 @@ deploy:
       script:
           - heroku container:release web -a "${HEROKU_APP_NAME}"
       on:
-          branch: development 
+          branch: production 
 
     - provider: pages
       skip-cleanup: true
@@ -37,4 +37,4 @@ deploy:
       keep-history: true
       local-dir: viewer-service
       on:
-          branch: development
+          branch: production
