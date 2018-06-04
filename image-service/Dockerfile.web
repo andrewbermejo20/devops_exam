@@ -3,5 +3,6 @@ FROM ttskch/nginx-php-fpm-heroku
 RUN apk update && apk add php7-gd 
 
 COPY image.php /docroot/image.php
+COPY nginx.conf $NGINX_CONFD_DIR/default.conf
 
 USER nonroot
