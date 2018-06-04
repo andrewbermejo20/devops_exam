@@ -16,11 +16,11 @@ install:
     - sed "s/localhost/${IMAGE_SERVICE_HOST}/g" -i viewer-service/index.html
     - docker-compose build
 
-script:
-    - grep -q "${IMAGE_SERVICE_HOST}" viewer-service/index.html
-    - docker-compose up -d image-service
-    - docker ps | grep -q "${HEROKU_APP_NAME}"
-    - docker-compose down
+#script:
+#    - grep -q "${IMAGE_SERVICE_HOST}" viewer-service/index.html
+#    - docker-compose up -d image-service
+#    - docker ps | grep -q "${HEROKU_APP_NAME}"
+#    - docker-compose down
 
 deploy:
     - provider: script
