@@ -12,15 +12,20 @@ before_install:
     - npm install -g heroku
     - heroku container:login  
 
-script:
-    - heroku container:push --recursive -a "${HEROKU_APP_NAME}"
-    - sed "s/localhost/${IMAGE_SERVICE_HOST}/g" -i viewer-service/index.html  
+install:
+    - sed "s/localhost/${IMAGE_SERVICE_HOST}/g" -i viewer-service/index.html
+    - docker-compose build
 
+after_install:
+    - docker-compose up -d image-service
+    - docker ps | grep -q "${HEROKU_APP_NAME}"
+    - docker-compose down
 
 deploy:
     - provider: script
       skip-cleanup: true
       script:
+          - heroku container:push --recursive -a "${HEROKU_APP_NAME}"
           - heroku container:release web -a "${HEROKU_APP_NAME}"
       on:
           branch: development 

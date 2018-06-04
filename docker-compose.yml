@@ -5,7 +5,7 @@ services:
         build: 
             context: image-service
             dockerfile: Dockerfile.web
-        image: devops-exam-image-service/web
+        image: registry.heroku.com/devops-exam-image-service/web
         environment:
                 - "PORT: 8888"
         ports:
