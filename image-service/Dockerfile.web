@@ -1,4 +1,4 @@
-FROM ttskch/nginx-php-fpm-heroku
+lorem ipsum dolor FROM ttskch/nginx-php-fpm-heroku
 
 RUN apk update && apk add php7-gd 
 
