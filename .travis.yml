@@ -14,14 +14,12 @@ before_install:
 
 install:
     - sed "s/localhost/${IMAGE_SERVICE_HOST}/g" -i viewer-service/index.html
-    - docker-compose build
+#    - docker-compose build
+    - heroku container:push --recursive -a "${HEROKU_APP_NAME}"
 
 script:
     - grep -q "${IMAGE_SERVICE_HOST}" viewer-service/index.html
-    - docker-compose up -d image-service
-    - docker ps | grep -q "${HEROKU_APP_NAME}"
-    - docker-compose down
-    - heroku container:push --recursive -a "${HEROKU_APP_NAME}"
+    - docker-compose up -d image-service && sleep 5 && docker ps | grep -q "${HEROKU_APP_NAME}" &&  docker-compose down
 
 deploy:
     - provider: script
