@@ -1,5 +1,12 @@
 # DevOps Engineer Exam
 
+## NOTE
+I want to use php-7.2-apache but for some FREAKING issue, I can`t make it run so I just use other base image
+```
+AH00534: apache2: Configuration error: More than one MPM loaded.
+```
+ 
+
 ## Goals
 
 1. Develop your own microservices
